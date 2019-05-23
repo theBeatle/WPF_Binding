@@ -1,0 +1,51 @@
+﻿<Window x:Class="Binding_07_relativeSource.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Binding_07_relativeSource"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel Margin="5">
+
+            <StackPanel Margin="10 20">
+                <TextBlock x:Name="SomeName"></TextBlock>
+                <!--using RelativeSource-->
+                <TextBlock FontSize="20" 
+                   FontFamily="Courier New" 
+               
+                   Text = "{Binding RelativeSource={RelativeSource Self}, Path=FontFamily}">
+                </TextBlock>
+                <!--Text="{Binding ElementName=sliderFontSize, Path=FontFamily} -->
+
+
+
+                <!--binding to Window with found mode-->
+                <TextBlock FontSize="20"
+                   Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                 AncestorType=Window}, 
+                                                  Path=FontFamily}">
+                </TextBlock>
+
+                <!--binding to 2nd StackPanel with find mode-->
+                <TextBlock FontSize="20"
+                   Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                 AncestorType=StackPanel,
+                                                                 AncestorLevel=2}, 
+                                                  Path=Margin}">
+                </TextBlock>
+
+                <TextBox 
+                Margin="20"
+                Height="50"
+                Text="{Binding RelativeSource={RelativeSource Mode=Self},
+                               Path=Background,
+                               Mode=TwoWay,
+                               UpdateSourceTrigger=PropertyChanged}" />
+
+
+
+            </StackPanel>
+
+    </StackPanel>
+</Window>

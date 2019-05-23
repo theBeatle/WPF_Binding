@@ -1,0 +1,34 @@
+﻿<Window x:Class="Binding_06_DataContext.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Binding_06_DataContext"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:Person x:Key="PersonDataSource" 
+                      FirstName="Linus for Binding"
+                      LastName="Torvalds for Binding" />
+        <local:Person x:Key="SecondPerson" 
+                      FirstName="Stewen Prata"
+                      LastName="Someone Usefull" />
+
+    </Window.Resources>
+
+        <!--setting DataContext - no need to set Path .-->
+        <StackPanel Margin="10" 
+                    Name="panel1"
+                    DataContext="{DynamicResource SecondPerson}">
+
+            <TextBlock Text="First name" />
+            <TextBox Text="{Binding FirstName}" />
+
+            <TextBlock />
+
+            <TextBlock Text="Last name" />
+            <TextBox Text="{Binding LastName}" />
+
+        </StackPanel>
+
+</Window>
